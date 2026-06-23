@@ -2,7 +2,7 @@
 # Endpoint type: Queue
 #
 # Required build arg:
-#   HF_TOKEN=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
+#   HF_TOKEN=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
 #
 # Do NOT hardcode your Hugging Face token into this file for production.
 # If you hardcode it temporarily for testing, rotate/delete the token afterwards.
