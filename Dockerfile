@@ -59,7 +59,7 @@ RUN set -eux; \
 # Hugging Face token for gated model download.
 # Pass this as a build arg:
 #   docker build --build-arg HF_TOKEN=hf_xxx -t your-image .
-ARG HF_TOKEN=""
+ARG HF_TOKEN="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"
 
 # Download workflow models.
 # Important: this block intentionally does NOT use `set -x`, because that can leak HF_TOKEN in logs.
