@@ -35,7 +35,7 @@ RUN set -eux; \
     done; \
     python3 -m pip install --no-cache-dir ultralytics opencv-python-headless huggingface_hub
 
-ARG HF_TOKEN=""
+ARG HF_TOKEN="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"
 
 RUN set -eux; \
     download_model() { \
