@@ -1,128 +1,124 @@
 {
-  "input": {
-    "workflow": {
-      "13": {
-        "inputs": {
-          "image": "Serious (11).png"
-        },
-        "class_type": "LoadImage",
-        "_meta": {
-          "title": "Load Image"
-        }
-      },
-      "38": {
-        "inputs": {
-          "text": "Reconstruct this image in higher resolution with maximum fidelity to the original.\nDo not reinterpret or redesign any feature. Only enhance detail, sharpness, and realism.",
-          "clip": [
-            "106",
-            0
-          ]
-        },
-        "class_type": "CLIPTextEncode",
-        "_meta": {
-          "title": "POSITIVE"
-        }
-      },
-      "48": {
-        "inputs": {
-          "filename_prefix": "ComfyUI",
-          "images": [
-            "104",
-            0
-          ]
-        },
-        "class_type": "SaveImage",
-        "_meta": {
-          "title": "Save Image"
-        }
-      },
-      "104": {
-        "inputs": {
-          "face_segm_model": "segm/face_yolov8n-seg2_60.pt",
-          "segm_threshold": 0.5,
-          "grow_crop": 32,
-          "sampler_name": "lcm",
-          "scheduler": "simple",
-          "cfg": 1,
-          "steps": 4,
-          "denoise": 1,
-          "seed": 304225737555564,
-          "edit_model_flux2klein": true,
-          "upscale_megapixel": 1.5,
-          "resize_back_to_original": false,
-          "multi_face_resolution_strategy": "optimal",
-          "pre_crop_factor": 1,
-          "post_mask_expand": 10,
-          "post_mask_blur": 12,
-          "post_mask_taper_borders": 8,
-          "stage1_sigma_factor": 1.002,
-          "stage2_sigma_factor": 0.98,
-          "stage1_sigma_start": 0.2,
-          "stage2_sigma_end": 0.8,
-          "details_amount_stage1": 0.1,
-          "details_amount_stage2": 0.1,
-          "enable_noise_injection": "enable",
-          "injection_point": 0.5,
-          "injection_strength": 0.05,
-          "normalize_injected_noise": "enable",
-          "enhancement_mix": 1,
-          "color_match_strength": 1,
-          "image": [
-            "13",
-            0
-          ],
-          "model": [
-            "108",
-            0
-          ],
-          "positive": [
-            "38",
-            0
-          ],
-          "vae": [
-            "107",
-            0
-          ]
-        },
-        "class_type": "FaceEnhancementWithInjection",
-        "_meta": {
-          "title": "Ultralytics Enhancer (CRT)"
-        }
-      },
-      "106": {
-        "inputs": {
-          "clip_name": "qwen_3_8b_fp8mixed.safetensors",
-          "type": "flux2",
-          "device": "default"
-        },
-        "class_type": "CLIPLoader",
-        "_meta": {
-          "title": "Load CLIP"
-        }
-      },
-      "107": {
-        "inputs": {
-          "vae_name": "flux2-vae.safetensors"
-        },
-        "class_type": "VAELoader",
-        "_meta": {
-          "title": "Load VAE"
-        }
-      },
-      "108": {
-        "inputs": {
-          "model_name": "flux-2-klein-9b-fp8.safetensors",
-          "weight_dtype": "default",
-          "compute_dtype": "default",
-          "patch_cublaslinear": true,
-          "sage_attention": "auto",
-          "enable_fp16_accumulation": true
-        },
-        "class_type": "DiffusionModelLoaderKJ",
-        "_meta": {
-          "title": "Diffusion Model Loader KJ"
-        }
-      }
+  "13": {
+    "inputs": {
+      "image": "Serious (11).png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "38": {
+    "inputs": {
+      "text": "Reconstruct this image in higher resolution with maximum fidelity to the original.\nDo not reinterpret or redesign any feature. Only enhance detail, sharpness, and realism.",
+      "clip": [
+        "106",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "POSITIVE"
+    }
+  },
+  "48": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "104",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "104": {
+    "inputs": {
+      "face_segm_model": "segm/face_yolov8n-seg2_60.pt",
+      "segm_threshold": 0.5,
+      "grow_crop": 32,
+      "sampler_name": "lcm",
+      "scheduler": "simple",
+      "cfg": 1,
+      "steps": 4,
+      "denoise": 1,
+      "seed": 304225737555564,
+      "edit_model_flux2klein": true,
+      "upscale_megapixel": 1.5,
+      "resize_back_to_original": false,
+      "multi_face_resolution_strategy": "optimal",
+      "pre_crop_factor": 1,
+      "post_mask_expand": 10,
+      "post_mask_blur": 12,
+      "post_mask_taper_borders": 8,
+      "stage1_sigma_factor": 1.002,
+      "stage2_sigma_factor": 0.98,
+      "stage1_sigma_start": 0.2,
+      "stage2_sigma_end": 0.8,
+      "details_amount_stage1": 0.1,
+      "details_amount_stage2": 0.1,
+      "enable_noise_injection": "enable",
+      "injection_point": 0.5,
+      "injection_strength": 0.05,
+      "normalize_injected_noise": "enable",
+      "enhancement_mix": 1,
+      "color_match_strength": 1,
+      "image": [
+        "13",
+        0
+      ],
+      "model": [
+        "108",
+        0
+      ],
+      "positive": [
+        "38",
+        0
+      ],
+      "vae": [
+        "107",
+        0
+      ]
+    },
+    "class_type": "FaceEnhancementWithInjection",
+    "_meta": {
+      "title": "Ultralytics Enhancer (CRT)"
+    }
+  },
+  "106": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "107": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "108": {
+    "inputs": {
+      "model_name": "flux-2-klein-9b-fp8.safetensors",
+      "weight_dtype": "default",
+      "compute_dtype": "default",
+      "patch_cublaslinear": true,
+      "sage_attention": "auto",
+      "enable_fp16_accumulation": true
+    },
+    "class_type": "DiffusionModelLoaderKJ",
+    "_meta": {
+      "title": "Diffusion Model Loader KJ"
     }
   }
 }
