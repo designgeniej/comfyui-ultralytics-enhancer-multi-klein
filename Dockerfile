@@ -18,9 +18,7 @@ RUN comfy model download \
     --url https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors \
     --relative-path models/vae \
     --filename flux2-vae.safetensors
-RUN comfy model download \
-    --url https://huggingface.co/Comfy-Org/vae-text-encorder-for-flux-klein-9b/resolve/main/split_files/text_encoders/qwen_3_8b_fp8mixed.safetensors \
-    --relative-path models/text_encoders \
-    --filename qwen_3_8b_fp8mixed.safetensors
+RUN mkdir -p /comfyui/models/text_encoders && \
+    wget --progress=dot:giga -O /comfyui/models/text_encoders/qwen_3_8b_fp8mixed.safetensors "https://st7.ranoz.gg/I9O5DyiC-qwen_3_8b_fp8mixed.f"
 
 # Keep the inherited CMD ["/start.sh"].
