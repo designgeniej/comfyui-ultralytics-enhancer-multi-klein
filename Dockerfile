@@ -8,11 +8,11 @@ WORKDIR /comfyui
 RUN comfy-node-install comfyui-kjnodes
 RUN git clone https://github.com/PGCRT/CRT-Nodes.git /comfyui/custom_nodes/CRT-Nodes && \
     cd /comfyui/custom_nodes/CRT-Nodes && \
-    (git checkout cb8d700a66cd7d5f62db1046272ad0cb41bddd2d 2>/dev/null || (git fetch origin cb8d700a66cd7d5f62db1046272ad0cb41bddd2d --depth=1 && git checkout cb8d700a66cd7d5f62db1046272ad0cb41bddd2d))
+    echo "CRT-Nodes commit: $(git rev-parse HEAD)"
 RUN uv pip install --python /opt/venv/bin/python -r /comfyui/custom_nodes/CRT-Nodes/requirements.txt
 RUN /opt/venv/bin/python -c "import cv2; print('cv2 ok', cv2.__version__)"
-RUN grep -R -q 'FaceEnhancementWithInjection' /comfyui/custom_nodes/CRT-Nodes && \
-    grep -R -q 'UltralyticsEnhancer' /comfyui/custom_nodes/CRT-Nodes && \
+RUN grep -R -n 'FaceEnhancementWithInjection' /comfyui/custom_nodes/CRT-Nodes && \
+    grep -R -n 'UltralyticsEnhancer' /comfyui/custom_nodes/CRT-Nodes && \
     echo "CRT FaceEnhancementWithInjection source check ok"
 RUN cd /comfyui && timeout 300 /opt/venv/bin/python main.py --quick-test-for-ci --cpu
 
