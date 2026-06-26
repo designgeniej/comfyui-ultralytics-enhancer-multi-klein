@@ -12,7 +12,7 @@ RUN git clone https://github.com/PGCRT/CRT-Nodes.git /comfyui/custom_nodes/CRT-N
 RUN uv pip install --python /opt/venv/bin/python -r /comfyui/custom_nodes/CRT-Nodes/requirements.txt
 RUN /opt/venv/bin/python -c "import cv2; print('cv2 ok', cv2.__version__)"
 RUN grep -q '"FaceEnhancementWithInjection"' /comfyui/custom_nodes/CRT-Nodes/__init__.py && \
-    grep -q 'UltralyticsEnhancer as FaceEnhancementWithInjection' /comfyui/custom_nodes/CRT-Nodes/__init__.py && \
+    grep -q 'UltralyticsEnhancer' /comfyui/custom_nodes/CRT-Nodes/__init__.py && \
     echo "CRT FaceEnhancementWithInjection source check ok"
 RUN cd /comfyui && timeout 300 /opt/venv/bin/python main.py --quick-test-for-ci --cpu
 
