@@ -5,7 +5,9 @@ FROM runpod/worker-comfyui:${WORKER_COMFYUI_VERSION}-base
 WORKDIR /comfyui
 
 # Install verified custom nodes.
-RUN comfy-node-install comfyui-kjnodes crt-nodes
+RUN comfy-node-install comfyui-kjnodes
+RUN git clone https://github.com/PGCRT/CRT-Nodes.git /comfyui/custom_nodes/CRT-Nodes && \
+    uv pip install -r /comfyui/custom_nodes/CRT-Nodes/requirements.txt
 
 # Download verified model files.
 RUN comfy model download \
