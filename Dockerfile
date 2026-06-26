@@ -9,10 +9,10 @@ RUN comfy-node-install comfyui-kjnodes
 RUN git clone https://github.com/PGCRT/CRT-Nodes.git /comfyui/custom_nodes/CRT-Nodes && \
     cd /comfyui/custom_nodes/CRT-Nodes && \
     (git checkout cb8d700a66cd7d5f62db1046272ad0cb41bddd2d 2>/dev/null || (git fetch origin cb8d700a66cd7d5f62db1046272ad0cb41bddd2d --depth=1 && git checkout cb8d700a66cd7d5f62db1046272ad0cb41bddd2d))
-RUN uv pip install -r /comfyui/custom_nodes/CRT-Nodes/requirements.txt
-RUN python -c "import cv2; print('cv2 ok', cv2.__version__)"
+RUN uv pip install --python /opt/venv/bin/python -r /comfyui/custom_nodes/CRT-Nodes/requirements.txt
+RUN /opt/venv/bin/python -c "import cv2; print('cv2 ok', cv2.__version__)"
 RUN cd /comfyui && \
-    python -c "import importlib.util, sys; sys.path.insert(0, '/comfyui'); spec = importlib.util.spec_from_file_location('crt_nodes', '/comfyui/custom_nodes/CRT-Nodes/__init__.py', submodule_search_locations=['/comfyui/custom_nodes/CRT-Nodes']); mod = importlib.util.module_from_spec(spec); sys.modules['crt_nodes'] = mod; spec.loader.exec_module(mod); assert 'FaceEnhancementWithInjection' in mod.NODE_CLASS_MAPPINGS, 'CRT node FaceEnhancementWithInjection was not registered'; print('CRT FaceEnhancementWithInjection ok')"
+    /opt/venv/bin/python -c "import importlib.util, sys; sys.path.insert(0, '/comfyui'); spec = importlib.util.spec_from_file_location('crt_nodes', '/comfyui/custom_nodes/CRT-Nodes/__init__.py', submodule_search_locations=['/comfyui/custom_nodes/CRT-Nodes']); mod = importlib.util.module_from_spec(spec); sys.modules['crt_nodes'] = mod; spec.loader.exec_module(mod); assert 'FaceEnhancementWithInjection' in mod.NODE_CLASS_MAPPINGS, 'CRT node FaceEnhancementWithInjection was not registered'; print('CRT FaceEnhancementWithInjection ok')"
 
 # Download verified model files.
 RUN comfy model download \
